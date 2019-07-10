@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable()
 export class AuthenticationService {
  
-  authState = new BehaviorSubject(false);
+  // authState = new BehaviorSubject(false);
  
   constructor(
     private router: Router,
@@ -16,18 +16,18 @@ export class AuthenticationService {
     private platform: Platform,
     public toastController: ToastController
   ) {
-    this.platform.ready().then(() => {
-      this.ifLoggedIn();
-    });
+    // this.platform.ready().then(() => {
+    //   this.ifLoggedIn();
+    // });
   }
  
-  ifLoggedIn() {
-    this.storage.get('USER_INFO').then((response) => {
-      if (response) {
-        this.authState.next(true);
-      }
-    });
-  }
+  // ifLoggedIn() {
+  //   this.storage.get('USER_INFO').then((response) => {
+  //     if (response) {
+  //       // this.authState.next(true);
+  //     }
+  //   });
+  // }
  
  
   login(data) {
@@ -38,8 +38,9 @@ export class AuthenticationService {
     this.storage.set('USER_INFO', dummy_response).then((response) => {
       if(response.Username == 'vikrant' && response.Password =='abc'){
         this.router.navigate(['dashboard']);
-        this.authState.next(true);
+        // this.authState.next(true);
       }else{
+        this.logout();
         alert('username or password is invalid')
       }
     });
@@ -48,14 +49,12 @@ export class AuthenticationService {
   logout() {
     this.storage.remove('USER_INFO').then(() => {
       this.router.navigate(['login']);
-      this.authState.next(false);
+      // this.authState.next(false);
     });
   }
  
-  isAuthenticated() {
-    return this.authState.value;
-  }
- 
- 
+  // isAuthenticated() {
+  //   return this.authState.value;
+  // }
  
 }

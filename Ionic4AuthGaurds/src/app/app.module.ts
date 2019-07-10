@@ -17,7 +17,7 @@ import { AuthenticationService } from './services/Authentication.service';
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(),IonicStorageModule.forRoot(), AppRoutingModule],
   providers: [
-    AuthGuardService,
+    // AuthGuardService,
     AuthenticationService,
     StatusBar,
     SplashScreen,

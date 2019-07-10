@@ -10,7 +10,7 @@ export class AuthGuardService {
     public authenticationService: AuthenticationService
       ) {}
 
-  canActivate(): boolean {
-    return this.authenticationService.isAuthenticated();
-  }
+  // canActivate(): boolean {
+  //   return this.authenticationService.isAuthenticated();
+  // }
 }
